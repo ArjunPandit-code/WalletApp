@@ -49,10 +49,10 @@ function Dashboard({ income, expense }) {
   const recentTransactions = transactions.slice(0, 5);
 
   return (
-    <div className="min-h-screen bg-gray-950 px-4 pb-8 pt-14 sm:px-6 sm:pt-14 lg:ml-60 lg:px-8 lg:pt-8">
+    <div className="min-h-screen bg-gray-950 px-4 pb-8 pt-24 sm:px-6 sm:pt-24 lg:ml-60 lg:px-8 lg:pt-8">
 
       {/* Heading */}
-      <div className="mb-8">
+      <div className="mb-6">
         <h1 className="text-3xl font-bold text-white">
           Dashboard
         </h1>
@@ -71,8 +71,8 @@ function Dashboard({ income, expense }) {
             Total Balance
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold text-red-400">
-            ₹{income - expense}
+          <h2 className="mt-3 text-3xl font-bold text-green-400">
+            ₹{Number(income) - Number(expense)}
           </h2>
         </div>
 
@@ -83,7 +83,7 @@ function Dashboard({ income, expense }) {
           </p>
 
           <h2 className="mt-3 text-3xl font-bold text-green-400">
-            ₹{income}
+            ₹{Number(income)}
           </h2>
         </div>
 
@@ -94,14 +94,14 @@ function Dashboard({ income, expense }) {
           </p>
 
           <h2 className="mt-3 text-3xl font-bold text-red-400">
-            ₹{expense}
+            ₹{Number(expense)}
           </h2>
         </div>
 
       </div>
 
       {/* Recent Transactions */}
-      <div className="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-5 sm:p-6">
+      <div className="mt-6 rounded-xl border border-gray-800 bg-gray-900 p-5 sm:p-6">
 
         <div className="mb-5 flex items-center justify-between">
           <h2 className="text-xl font-semibold text-white">

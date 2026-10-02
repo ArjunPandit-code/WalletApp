@@ -1,20 +1,50 @@
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import walletImage from "../assets/wallet-clip-art-png.png";
 
 function Sidebar() {
-  return (
-    <div className="fixed left-0 top-0 z-50 w-full border-b border-gray-800 bg-gray-950 lg:h-screen lg:w-60 lg:border-b-0 lg:border-r">
+  const [showSidebar, setShowSidebar] = useState(true);
 
-      {/* Logo - Desktop Only */}
-      <div className="hidden px-6 py-3 lg:block">
-        <h2 className="text-2xl font-bold text-white">
-          MyWallet
-        </h2>
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        setShowSidebar(false);
+      } else {
+        setShowSidebar(true);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      className={`fixed left-0 top-0 z-50 w-full border-b border-gray-800 bg-gray-950 transition-transform duration-300
+      ${showSidebar ? "translate-y-0" : "-translate-y-full"}
+      lg:h-screen lg:w-60 lg:border-b-0 lg:border-r`}
+    >
+      {/* Logo */}
+      <div className="hidden px-6 py-3 lg:block ">
+        <div className="flex items-center gap-3">
+          <img
+            src={walletImage}
+            alt="Wallet"
+            className="h-12 w-12 object-contain"
+          />
+
+          <h2 className="text-2xl font-bold text-white">
+            MyWallet
+          </h2>
+        </div>
       </div>
 
       {/* Navigation */}
       <div className="flex gap-2 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mt-20 lg:flex-col lg:gap-3 lg:overflow-visible lg:px-4 lg:py-0">
 
-        {/* Dashboard */}
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -28,7 +58,6 @@ function Sidebar() {
           Dashboard
         </NavLink>
 
-        {/* Income */}
         <NavLink
           to="/income"
           className={({ isActive }) =>
@@ -42,7 +71,6 @@ function Sidebar() {
           Income
         </NavLink>
 
-        {/* Expenses */}
         <NavLink
           to="/expenses"
           className={({ isActive }) =>
@@ -56,7 +84,6 @@ function Sidebar() {
           Expenses
         </NavLink>
 
-        {/* Transactions */}
         <NavLink
           to="/transactions"
           className={({ isActive }) =>
@@ -70,7 +97,6 @@ function Sidebar() {
           Transactions
         </NavLink>
 
-        {/* Budget */}
         <NavLink
           to="/budget"
           className={({ isActive }) =>
@@ -84,7 +110,6 @@ function Sidebar() {
           Budget
         </NavLink>
 
-        {/* Charts */}
         <NavLink
           to="/charts"
           className={({ isActive }) =>

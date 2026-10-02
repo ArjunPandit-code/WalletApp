@@ -59,7 +59,7 @@ function Income(props) {
   }, [salaryData]);
 
   return (
-    <div className="min-h-screen bg-gray-950 px-4 pb-6 pt-32 sm:px-6 lg:ml-60 lg:px-8 lg:py-8">
+   <div className="min-h-screen bg-gray-950 px-4 pb-8 pt-24 sm:px-6 sm:pt-24 lg:ml-60 lg:px-8 lg:pt-8">
 
       {/* Header */}
       <div className="mb-6 sm:mb-8">

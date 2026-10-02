@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
 function Transactions() {
+
+  //useState hi bana ya aha
+
   const [searched, setSearched] = useState("");
   const [categories, setCategories] = useState("");
   const [type, setType] = useState("");
 
+  //jo data local storage me ha wo call kr rh aha
   const [salaryData, setSalaryData] = useState(() => {
     const stored = localStorage.getItem("salaryData");
     return stored ? JSON.parse(stored) : [];
@@ -14,6 +18,10 @@ function Transactions() {
     const stored = localStorage.getItem("expenseData");
     return stored ? JSON.parse(stored) : [];
   });
+
+  //ye salary variable me data store kr dega aur expense variable me data store kr dega
+  //aur ye data local storage me save ho jaega
+  //jb storage or focus event chalenge ye function run hoga aur data ko sync kr dega
 
   useEffect(() => {
     function syncData() {
@@ -33,6 +41,7 @@ function Transactions() {
       window.removeEventListener("focus", syncData);
     };
   }, []);
+  
 
   const allTransactions = [
     ...salaryData.map((item, index) => ({
@@ -94,7 +103,7 @@ function Transactions() {
   const hasFilters = searched !== "" || type !== "" || categories !== "";
 
   return (
-    <div className="min-h-screen bg-gray-950 p-4 pt-32 sm:p-6 sm:pt-32 lg:ml-60 lg:p-8">
+   <div className="min-h-screen bg-gray-950 px-4 pb-8 pt-24 sm:px-6 sm:pt-24 lg:ml-60 lg:px-8 lg:pt-8">
       {/* Header */}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl font-bold text-white sm:text-3xl">

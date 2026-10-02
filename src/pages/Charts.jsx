@@ -148,7 +148,7 @@ function Charts() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-950 p-4 pt-32 sm:p-6 sm:pt-32 lg:ml-60 lg:p-8">
+    <div className="min-h-screen bg-gray-950 px-4 pb-8 pt-24 sm:px-6 sm:pt-24 lg:ml-60 lg:px-8 lg:pt-8">
 
       {/* Header */}
       <div className="mb-6 sm:mb-8">
