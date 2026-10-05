@@ -62,10 +62,11 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0b0a] px-4 pb-10 pt-32 text-white sm:px-6 lg:ml-60 lg:px-8 lg:pt-5">
+    <div className="min-h-screen bg-[#0b0b0a] px-4 pb-10 pt-24 text-white sm:px-6 lg:ml-60 lg:px-8 lg:pt-3">
+
       {/* ================= TOP HEADER ================= */}
 
-      <div className="mb-7 flex flex-col gap-4 border-b border-[#252321] pb-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-7 flex flex-col gap-4 border-b border-[#252321] pb-5">
         <div className="flex items-center gap-3">
           <span className="rounded border border-[#6d3516] bg-[#21150f] px-3 py-1 text-[10px] font-bold tracking-widest text-[#ff7424]">
             / DASHBOARD
@@ -74,28 +75,6 @@ const Dashboard = () => {
           <h1 className="text-lg font-bold text-gray-200 sm:text-xl">
             Financial Overview
           </h1>
-        </div>
-
-        <div className="flex gap-2">
-          <button
-            onClick={() => {
-              window.location.href = "/income";
-            }}
-            className="rounded-lg border border-[#292624] bg-[#151413] px-4 py-2 text-sm font-semibold text-gray-300 transition hover:border-[#713817] hover:bg-[#21150f] hover:text-white"
-          >
-            <span className="mr-2 text-gray-400">+</span>
-            Add Income
-          </button>
-
-          <button
-            onClick={() => {
-              window.location.href = "/expenses";
-            }}
-            className="rounded-lg bg-[#ff7424] px-4 py-2 text-sm font-bold text-black shadow-[0_0_18px_rgba(255,116,36,0.18)] transition hover:bg-[#ff853d]"
-          >
-            <span className="mr-2">−</span>
-            Add Expenses
-          </button>
         </div>
       </div>
 
@@ -117,13 +96,16 @@ const Dashboard = () => {
         </h2>
 
         <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-500 sm:text-base">
-          Lode, ye dashboard hai. Yahan se tu apne financials ka overview dekh sakta hai. Income aur expenses ka hisaab rakhne ke liye ye perfect jagah hai.
+          Lode, ye dashboard hai. Yahan se tu apne financials ka overview dekh
+          sakta hai. Income aur expenses ka hisaab rakhne ke liye ye perfect
+          jagah hai.
         </p>
       </div>
 
       {/* ================= STAT CARDS ================= */}
 
       <div className="mb-7 grid grid-cols-1 gap-4 md:grid-cols-3">
+
         {/* BALANCE */}
 
         <div className="rounded-2xl border border-[#703a17] bg-[#12110f] p-5 shadow-[0_0_25px_rgba(255,116,36,0.03)]">
@@ -132,7 +114,9 @@ const Dashboard = () => {
               NET TOTAL BALANCE
             </p>
 
-            <div className="rounded-lg bg-[#29180d] p-2 text-[#ff7424]">₹</div>
+            <div className="rounded-lg bg-[#29180d] p-2 text-[#ff7424]">
+              ₹
+            </div>
           </div>
 
           <h3
@@ -198,6 +182,7 @@ const Dashboard = () => {
       {/* ================= BOTTOM SECTION ================= */}
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.25fr_1fr]">
+
         {/* ================= RECENT TRANSACTIONS ================= */}
 
         <div className="rounded-2xl border border-[#252422] bg-[#111110] p-5">
@@ -243,7 +228,9 @@ const Dashboard = () => {
 
                   <span
                     className={`h-2 w-2 shrink-0 rounded-full ${
-                      item.type === "income" ? "bg-green-500" : "bg-[#ff7424]"
+                      item.type === "income"
+                        ? "bg-green-500"
+                        : "bg-[#ff7424]"
                     }`}
                   />
 
@@ -286,6 +273,7 @@ const Dashboard = () => {
         {/* ================= RUNTIME PANEL ================= */}
 
         <div className="overflow-hidden rounded-2xl border border-[#252422] bg-[#111110]">
+
           {/* PANEL HEADER */}
 
           <div className="flex items-center justify-between border-b border-[#282624] px-5 py-4">
@@ -303,7 +291,9 @@ const Dashboard = () => {
           {/* CODE AREA */}
 
           <div className="min-h-[245px] px-5 py-5 font-mono text-xs leading-6">
-            <p className="text-[#ff7424]">const walletMetrics = {"{"}</p>
+            <p className="text-[#ff7424]">
+              const walletMetrics = {"{"}
+            </p>
 
             <p className="pl-4 text-gray-500">
               inflowRate:{" "}
@@ -324,7 +314,9 @@ const Dashboard = () => {
             <p className="pl-4 text-gray-500">
               netEquilibrium:{" "}
               <span
-                className={balance >= 0 ? "text-green-500" : "text-red-500"}
+                className={
+                  balance >= 0 ? "text-green-500" : "text-red-500"
+                }
               >
                 "₹{formatAmount(balance)}"
               </span>
@@ -342,28 +334,6 @@ const Dashboard = () => {
             </p>
 
             <p className="text-gray-500">{"};"}</p>
-          </div>
-
-          {/* BUTTONS */}
-
-          <div className="grid grid-cols-2 gap-2 px-5 pb-5">
-            <button
-              onClick={() => {
-                window.location.href = "/income";
-              }}
-              className="rounded-lg bg-[#ff7424] px-4 py-2.5 text-xs font-bold text-black transition hover:bg-[#ff853d]"
-            >
-              Add Revenue
-            </button>
-
-            <button
-              onClick={() => {
-                window.location.href = "/budget";
-              }}
-              className="rounded-lg border border-[#2c2927] bg-[#151413] px-4 py-2.5 text-xs font-bold text-gray-300 transition hover:border-[#ff7424] hover:text-white"
-            >
-              Review Budgets
-            </button>
           </div>
         </div>
       </div>
