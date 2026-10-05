@@ -106,19 +106,18 @@ const Dashboard = () => {
           <span className="text-[#ff7424]">☆</span>
 
           <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-[#ff7424]">
-            SYSTEM STATUS: OPTIMIZED
+            SYSTEM STATUS: Ghee Khatam
           </span>
         </div>
 
         <h2 className="max-w-2xl text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
-          Engineering <span className="text-[#ff7424]">Wealth.</span>
+          is Garib<span className="text-[#ff7424]"> ki.</span>
           <br />
-          Precision Ledger.
+          MaaKiChut.
         </h2>
 
         <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-500 sm:text-base">
-          Your personal financial runtime with real-time balance calculations,
-          automated category tracking, and local algorithmic storage.
+          Lode, ye dashboard hai. Yahan se tu apne financials ka overview dekh sakta hai. Income aur expenses ka hisaab rakhne ke liye ye perfect jagah hai.
         </p>
       </div>
 
