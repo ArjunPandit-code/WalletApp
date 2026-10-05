@@ -7,124 +7,138 @@ function Sidebar() {
 
   useEffect(() => {
     function handleScroll() {
-      if (window.scrollY > 50) {
-        setShowSidebar(false);
+      if (window.innerWidth < 1024) {
+        setShowSidebar(window.scrollY <= 50);
       } else {
         setShowSidebar(true);
       }
     }
 
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setShowSidebar(true);
+      }
+    }
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  return (
-    <div
-      className={`fixed left-0 top-0 z-50 w-full border-b border-gray-800 bg-gray-950 transition-transform duration-300
-      ${showSidebar ? "translate-y-0" : "-translate-y-full"}
-      lg:h-screen lg:w-60 lg:border-b-0 lg:border-r`}
-    >
-      {/* Logo */}
-      <div className="hidden px-6 py-3 lg:block ">
-        <div className="flex items-center gap-3">
-          <img
-            src={walletImage}
-            alt="Wallet"
-            className="h-12 w-12 object-contain"
-          />
+  const navItems = [
+    { name: "Dashboard", path: "/", icon: "▦" },
+    { name: "Income", path: "/income", icon: "⌁" },
+    { name: "Expenses", path: "/expenses", icon: "⌁" },
+    { name: "Transactions", path: "/transactions", icon: "⇄" },
+    { name: "Budget", path: "/budget", icon: "$" },
+    { name: "Charts", path: "/charts", icon: "⌁" },
+  ];
 
-          <h2 className="text-2xl font-bold text-white">
-            MyWallet
-          </h2>
+  return (
+    <aside
+      className={`
+        fixed left-0 top-0 z-50
+        w-full
+        border-b border-[#252321]
+        bg-[#111110]
+        transition-transform duration-300
+
+        ${showSidebar ? "translate-y-0" : "-translate-y-full"}
+
+        lg:h-screen
+        lg:w-60
+        lg:border-b-0
+        lg:border-r
+        lg:translate-y-0
+      `}
+    >
+      {/* LOGO / BRAND */}
+      <div
+        className="
+          flex h-[68px] items-center
+          border-b border-[#252321]
+          px-4
+          lg:h-[82px]
+          lg:px-5
+        "
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#ff7424] shadow-[0_0_18px_rgba(255,116,36,0.2)]">
+            <img
+              src={walletImage}
+              alt="Wallet"
+              className="h-7 w-7 object-contain"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-lg font-black leading-none text-gray-100">
+              My<span className="text-[#ff7424]">Wallet</span>
+            </h2>
+
+            <p className="mt-1 font-mono text-[8px] tracking-[0.15em] text-gray-600">
+              CHAICODE ENGINE
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="flex gap-2 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mt-20 lg:flex-col lg:gap-3 lg:overflow-visible lg:px-4 lg:py-0">
+      {/* NAVIGATION */}
+      <div className="px-2 py-3 lg:mt-5">
+        <p className="mb-3 hidden px-2 font-mono text-[9px] font-bold tracking-[0.18em] text-gray-600 lg:block">
+          NAVIGATION SYSTEM
+        </p>
 
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
+        <div
+          className="
+            flex gap-1 overflow-x-auto
+            [scrollbar-width:none]
+            [&::-webkit-scrollbar]:hidden
+
+            lg:flex-col
+            lg:gap-1
+            lg:overflow-visible
+          "
         >
-          Dashboard
-        </NavLink>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
+                `group flex shrink-0 items-center gap-3 rounded-lg border
+                px-3 py-2.5 text-l font-medium transition-all duration-200
+                ${
+                  isActive
+                    ? "border-[#713817] bg-[#28180f] text-white"
+                    : "border-transparent text-gray-500 hover:bg-[#1a1816] hover:text-gray-200"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <span
+                    className={`flex w-5 shrink-0 items-center justify-center text-base ${
+                      isActive
+                        ? "text-[#ff7424]"
+                        : "text-gray-500 group-hover:text-[#ff7424]"
+                    }`}
+                  >
+                    {item.icon}
+                  </span>
 
-        <NavLink
-          to="/income"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
-        >
-          Income
-        </NavLink>
-
-        <NavLink
-          to="/expenses"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
-        >
-          Expenses
-        </NavLink>
-
-        <NavLink
-          to="/transactions"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
-        >
-          Transactions
-        </NavLink>
-
-        <NavLink
-          to="/budget"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
-        >
-          Budget
-        </NavLink>
-
-        <NavLink
-          to="/charts"
-          className={({ isActive }) =>
-            `whitespace-nowrap rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 lg:px-5 lg:py-3.5 lg:text-lg ${
-              isActive
-                ? "bg-green-950 text-green-400"
-                : "text-gray-400 hover:bg-gray-800 hover:text-white"
-            }`
-          }
-        >
-          Charts
-        </NavLink>
-
+                  <span className="whitespace-nowrap">{item.name}</span>
+                </>
+              )}
+            </NavLink>
+          ))}
+        </div>
       </div>
-    </div>
+    </aside>
   );
 }
 
