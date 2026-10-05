@@ -64,7 +64,7 @@ function Sidebar() {
           lg:h-auto
           lg:px-5
           lg:py-5
-          gap-10
+          gap-5
         "
       >
         {/* LOGO */}
