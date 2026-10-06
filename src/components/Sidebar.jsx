@@ -79,7 +79,7 @@ function Sidebar() {
 
           <div>
             <h2 className="text-lg font-black leading-none text-gray-100">
-              Anal<span className="text-[#ff7424]">Destroyer</span>
+              Gareeb<span className="text-[#ff7424]">Wallet</span>
             </h2>
 
             <p className="mt-1 font-mono text-[8px] tracking-[0.15em] text-gray-600">

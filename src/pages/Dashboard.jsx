@@ -90,15 +90,13 @@ const Dashboard = () => {
         </div>
 
         <h2 className="max-w-2xl text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
-          is Garib<span className="text-[#ff7424]"> ki.</span>
+          Your<span className="text-[#ff7424]"> Personal</span>
           <br />
-          MaaKiChut.
+          Financial Dashboard.
         </h2>
 
         <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-500 sm:text-base">
-          Lode, ye dashboard hai. Yahan se tu apne financials ka overview dekh
-          sakta hai. Income aur expenses ka hisaab rakhne ke liye ye perfect
-          jagah hai.
+          Track your income, expenses, and balance in one place. Get insights
         </p>
       </div>
 
